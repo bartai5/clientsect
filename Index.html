@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f1f1f1;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .section {
+        background-color: #fff;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      .section h1 {
+        font-size: 50px;
+        color: #333;
+        opacity: 0;
+        animation: countUp 1.5s ease-out forwards;
+      }
+      .section p {
+        font-size: 20px;
+        color: #666;
+      }
+      @keyframes countUp {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @media only screen and (max-width: 768px) {
+        .container {
+          flex-direction: column;
+          width: 100%;
+        }
+        .section {
+          width: 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="section">
+        <p>Satisfied Clients</p>
+        <h1><span class="count">20</span>+</h1>
+      </div>
+      <div class="section">
+        <p>Completed Projects</p>
+        <h1><span class="count">20</span>+</h1>
+      </div>
+      <div class="section">
+        <p>Non-Active Boreholes</p>
+        <h1><span class="count">20</span>+</h1>
+      </div>
+    </div>
+    <script>
+      const sections = document.querySelectorAll(".count");
+
+      const options = {
+        threshold: 0.5,
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.intersectionRatio > 0) {
+            const target = entry.target;
+            const endCount = parseInt(target.textContent);
+            let currentCount = 0;
+            const interval = setInterval(() => {
+              if (currentCount <= endCount) {
+                target.textContent = currentCount;
+                currentCount++;
+              } else {
+                clearInterval(interval);
+              }
+            }, 50);
+            observer.unobserve(target);
+          }
+        });
+      }, options);
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
