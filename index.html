@@ -11,13 +11,14 @@
         background-color: #f1f1f1;
         font-family: Arial, sans-serif;
       }
-      .container {
+      .completed-Projects {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        margin: 20px 0;
       }
-      .section {
+      .completed-projects__section {
         background-color: #fff;
         padding: 20px;
         margin: 10px;
@@ -26,13 +27,13 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         text-align: center;
       }
-      .section h1 {
+      .completed-projects__section h1 {
         font-size: 50px;
         color: #333;
         opacity: 0;
         animation: countUp 1.5s ease-out forwards;
       }
-      .section p {
+      .completed-projects__section p {
         font-size: 20px;
         color: #666;
       }
@@ -44,32 +45,52 @@
           opacity: 1;
         }
       }
-      @media only screen and (max-width: 768px) {
-        .container {
-          flex-direction: column;
+      @media only screen and (max-width: 599px) {
+        .completed-Projects {
           width: 100%;
         }
-        .section {
-          width: 50%;
+        .completed-projects__section {
+          width: 90%;
+        }
+      }
+      @media only screen and (min-width: 600px) and (max-width: 900px) {
+        .completed-Projects {
+          width: 100%;
+        }
+        .completed-projects__section {
+          width: 40%;
+        }
+      }
+      @media only screen and (min-width: 1200px){
+        .completed-projects__section {
+          width: 250px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="section">
-        <p>Satisfied Clients</p>
-        <h1><span class="count">20</span>+</h1>
+    <section class="completed-Projects">
+      <div class="completed-projects__section">
+        <p>Hydrogeological Survey</p>
+        <h1><span class="count">201</span>+</h1>
       </div>
-      <div class="section">
-        <p>Completed Projects</p>
-        <h1><span class="count">20</span>+</h1>
+      <div class="completed-projects__section">
+        <p>Drilled Boreholes</p>
+        <h1><span class="count">53</span>+</h1>
       </div>
-      <div class="section">
-        <p>Non-Active Boreholes</p>
-        <h1><span class="count">20</span>+</h1>
+      <div class="completed-projects__section">
+        <p>Boreholes Rehabilitated</p>
+        <h1><span class="count">19</span>+</h1>
       </div>
-    </div>
+      <div class="completed-projects__section">
+        <p>Borehole Inspection</p>
+        <h1><span class="count">10</span>+</h1>
+      </div>
+      <div class="completed-projects__section">
+        <p>Pending Projects</p>
+        <h1><span class="count">5</span>+</h1>
+      </div>
+    </section>
     <script>
       const sections = document.querySelectorAll(".count");
 
